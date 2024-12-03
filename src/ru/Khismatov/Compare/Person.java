@@ -1,4 +1,6 @@
-public class Person implements Comparable<Person>{
+package ru.Khismatov.Compare;
+
+public class Person implements Comparable<Person> {
     private final String name;
     private int age;
 
