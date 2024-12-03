@@ -32,19 +32,10 @@ public class ListUtils {
         return result;
     }
 
-    public static <T, P extends Collection<T>> P splitCollection(
-            List<T> sourceList,
-            Supplier<P> collectionSupplier,
-            Function<T, Boolean> classifier
-    ) {
-        // Создаём коллекцию с помощью переданного Supplier
+    public static <T, P extends Collection<T>> P collect(List<T> sourceList, Supplier<P> collectionSupplier, Function<T, Boolean> classifier) {
         P collection = collectionSupplier.get();
-
-        // Добавляем элементы в коллекцию, классифицируя их с помощью переданного classifier
         for (T element : sourceList) {
-            if (classifier.apply(element)) {
-                collection.add(element);
-            }
+            if (classifier.apply(element)) {collection.add(element);}
         }
         return collection;
     }

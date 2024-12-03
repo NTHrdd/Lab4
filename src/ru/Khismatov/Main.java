@@ -1,9 +1,11 @@
+package ru.Khismatov;
+
 import ru.Khismatov.Boxes.Box;
 import ru.Khismatov.Compare.Person;
-import ru.Khismatov.ListUtils.ListUtils;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static ru.Khismatov.ListUtils.ListUtils.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,25 +59,31 @@ public class Main {
                     }
                     break;
                 case 4:
-                    System.out.println("Length of strings: " + ListUtils.transform(List.of("qwerty", "asdfg", "zx"), String::length));
-                    System.out.println("Absolute values: " + ListUtils.transform(List.of(1, -3, 7), Math::abs));
-                    System.out.println("Max value: " + ListUtils.transform(List.of(List.of(1, 2, 3), List.of(-5, -3, 0), List.of(8, 7, 9)), list -> list.stream().max(Integer::compareTo).orElseThrow()));
+                    System.out.println("Length of strings: " + transform(List.of("qwerty", "asdfg", "zx"), String::length));
+                    System.out.println("Absolute values: " + transform(List.of(1, -3, 7), Math::abs));
+                    System.out.println("Max value: " + transform(List.of(List.of(1, 2, 3), List.of(-5, -3, 0), List.of(8, 7, 9)), list -> list.stream().max(Integer::compareTo).orElseThrow()));
                     break;
                 case 5:
-                    System.out.println("Stings have less 3 letters: " + ListUtils.filter(List.of("qwerty", "asdfg", "zx"), x -> x.length() < 3));
-                    System.out.println("Positive numbers: " + ListUtils.filter(List.of(1, -3, 7), x -> x > 0));
+                    System.out.println("Stings have less 3 letters: " + filter(List.of("qwerty", "asdfg", "zx"), x -> x.length() < 3));
+                    System.out.println("Positive numbers: " + filter(List.of(1, -3, 7), x -> x > 0));
                     System.out.println("Lists with only negative numbers: ");
-                    for (List<Integer> list : ListUtils.filter(List.of(List.of(1, -2, 3), List.of(-1, -2, -3), List.of(0, -4, -5)), list -> list.stream().allMatch(x -> x < 0))) {
+                    for (List<Integer> list : filter(List.of(List.of(1, -2, 3), List.of(-1, -2, -3), List.of(0, -4, -5)), list -> list.stream().allMatch(x -> x < 0))) {
                         System.out.println(list);
                     }
                     break;
                 case 6:
-                    System.out.println("Concatenated string: " + ListUtils.reduce(List.of("qwerty", "asdfg", "zx"), (a, b) -> a + b, ""));
-                    System.out.println("Sum: " + ListUtils.reduce(List.of(1, -3, 7), (a, b) -> a + b, 0));
-                    System.out.println("Total elements: " + ListUtils.reduce(List.of(List.of(1, 2), List.of(3, 4, 5), List.of(6)), (a, b) -> a + b.size(), 0));
+                    System.out.println("Concatenated string: " + reduce(List.of("qwerty", "asdfg", "zx"), (a, b) -> a + b, ""));
+                    System.out.println("Sum: " + reduce(List.of(1, -3, 7), (a, b) -> a + b, 0));
+                    System.out.println("Total elements: " + reduce(List.of(List.of(1, 2), List.of(3, 4, 5), List.of(6)), (a, b) -> a + b.size(), 0));
                     break;
                 case 7:
+                    System.out.println("Array of positive numbers: " + collect(List.of(1, -3, 7), ArrayList::new, num -> num > 0));
+                    System.out.println("Array of negative numbers: " + collect(List.of(1, -3, 7), ArrayList::new, num -> num < 0));
 
+                    System.out.println("Strings with length 6: " + collect(List.of("qwerty", "asdfg", "zx", "qw"), ArrayList::new, str -> str.length() == 6));
+                    System.out.println("Strings with length 2: " + collect(List.of("qwerty", "asdfg", "zx", "qw"), ArrayList::new, str -> str.length() == 2));
+
+                    System.out.println("Unique strings: " + collect(List.of("qwerty", "asdfg", "qwerty", "qw"), HashSet::new, str -> true));
                     break;
             }
         } while (n != 8);
