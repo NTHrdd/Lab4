@@ -73,7 +73,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Concatenated string: " + reduce(List.of("qwerty", "asdfg", "zx"), (a, b) -> a + b, ""));
-                    System.out.println("Sum: " + reduce(List.of(1, -3, 7), (a, b) -> a + b, 0));
+                    System.out.println("Sum: " + reduce(List.of(1, -3, 7), Integer::sum, 0));
                     System.out.println("Total elements: " + reduce(List.of(List.of(1, 2), List.of(3, 4, 5), List.of(6)), (a, b) -> a + b.size(), 0));
                     break;
                 case 7:
